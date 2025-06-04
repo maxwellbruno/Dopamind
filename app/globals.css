@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-slate-900 text-slate-100;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Responsive container that adapts to all screen sizes */
+  .app-container {
+    @apply w-full min-h-screen bg-gradient-to-br from-slate-900 to-slate-800;
+  }
+
+  /* Mobile-first responsive layout */
+  .responsive-container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Adaptive content wrapper */
+  .content-wrapper {
+    @apply w-full max-w-md mx-auto lg:max-w-4xl lg:grid lg:grid-cols-3 lg:gap-8;
+  }
+
+  /* Mobile card layout */
+  .mobile-card {
+    @apply bg-slate-800 border border-slate-700 rounded-xl p-6 mb-6;
+  }
+
+  /* Desktop sidebar */
+  .desktop-sidebar {
+    @apply hidden lg:block lg:col-span-1;
+  }
+
+  /* Main content area */
+  .main-content {
+    @apply lg:col-span-2;
+  }
+
+  /* Responsive header */
+  .app-header {
+    @apply flex justify-between items-center p-4 sm:p-6 border-b border-slate-700;
+  }
+
+  /* Adaptive navigation */
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-slate-800 border-t border-slate-700 px-4 py-3 z-50 lg:relative lg:bottom-auto lg:border-t-0 lg:border lg:rounded-xl lg:mb-6;
+  }
+
+  /* Desktop navigation */
+  .desktop-nav {
+    @apply hidden lg:flex lg:flex-col lg:space-y-2;
+  }
+
+  /* Mobile navigation grid */
+  .mobile-nav-grid {
+    @apply grid grid-cols-4 gap-1 lg:hidden;
+  }
+
+  /* Navigation items */
+  .nav-item {
+    @apply flex flex-col items-center gap-1 p-3 rounded-lg transition-colors cursor-pointer lg:flex-row lg:justify-start lg:gap-3 lg:p-4;
+  }
+
+  .nav-item.active {
+    @apply text-emerald-400 bg-emerald-500/10;
+  }
+
+  .nav-item:not(.active) {
+    @apply text-slate-400 hover:text-slate-300 hover:bg-slate-700/50;
+  }
+
+  /* Responsive text sizes */
+  .text-responsive-xl {
+    @apply text-2xl sm:text-3xl lg:text-4xl;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
+
+  .text-responsive-base {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+
+  /* Responsive spacing */
+  .spacing-responsive {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  /* Grid layouts for different screens */
+  .stats-grid {
+    @apply grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4;
+  }
+
+  .feature-grid {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  /* Responsive timer */
+  .timer-container {
+    @apply w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 mx-auto;
+  }
+
+  /* FIXED: Responsive buttons with proper spacing between utility classes */
+  .btn-responsive {
+    @apply w-full sm:w-auto sm:min-w-[120px] lg:min-w-[140px];
+  }
+
+  /* Additional responsive button variants */
+  .btn-responsive-sm {
+    @apply w-full sm:w-auto sm:min-w-[100px] lg:min-w-[120px];
+  }
+
+  .btn-responsive-lg {
+    @apply w-full sm:w-auto sm:min-w-[140px] lg:min-w-[160px] xl:min-w-[180px];
+  }
+
+  /* Loading spinner */
+  .loading-spinner {
+    @apply w-8 h-8 border-4 border-slate-600 border-t-emerald-500 rounded-full animate-spin;
+  }
+
+  /* Platform badge */
+  .platform-badge {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs bg-slate-700 text-slate-300;
+  }
+
+  /* Responsive form elements */
+  .form-responsive {
+    @apply w-full sm:max-w-md lg:max-w-lg;
+  }
+
+  .input-responsive {
+    @apply w-full px-3 py-2 sm:px-4 sm:py-3 lg:px-5 lg:py-4;
+  }
+}
+
+/* Desktop-specific layouts */
+@media (min-width: 1024px) {
+  .desktop-layout {
+    @apply grid grid-cols-12 gap-8 min-h-screen;
+  }
+
+  .desktop-sidebar-area {
+    @apply col-span-3 xl:col-span-2;
+  }
+
+  .desktop-main-area {
+    @apply col-span-9 xl:col-span-10;
+  }
+
+  .desktop-content-card {
+    @apply bg-slate-800 border border-slate-700 rounded-2xl p-8;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-layout {
+    @apply grid grid-cols-2 gap-6;
+  }
+
+  .tablet-full {
+    @apply col-span-2;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    @apply hidden;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .high-contrast {
+    @apply border-2 border-white;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reduce-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  .auto-dark {
+    @apply bg-slate-900 text-slate-100;
+  }
+}
+
+/* Light mode support */
+@media (prefers-color-scheme: light) {
+  .auto-light {
+    @apply bg-white text-slate-900;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-500;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-emerald-500;
+}
+
+/* Selection styles */
+::selection {
+  @apply bg-emerald-500/30 text-emerald-100;
+}
